@@ -1,0 +1,8 @@
+cirq==0.11.0
+protobuf==3.13.0
+tensorflow==2.4.1
+tensorflow-quantum==0.5.1
+jaxlib
+jax
+jupyter
+tensornetwork
