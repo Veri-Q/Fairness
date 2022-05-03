@@ -6,3 +6,5 @@ jaxlib
 jax
 jupyter
 tensornetwork
+dice_ml
+sklearn

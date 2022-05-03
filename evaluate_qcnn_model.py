@@ -107,14 +107,14 @@ def random_variables():
 
 if __name__ == '__main__':
     QUBITS_NUM = int(sys.argv[1])
-    NOISY_TYPE = str(sys.argv[2])
+    NOISE_TYPE = str(sys.argv[2])
     noise_op = {
         "phase_flip": cirq.phase_flip,
         "depolarize": cirq.depolarize,
         "bit_flip": cirq.bit_flip,
         "mixed": cirq.depolarize
     }
-    if NOISY_TYPE == "mixed":
+    if NOISE_TYPE == "mixed":
         mixed = True
     else:
         mixed = False
@@ -125,9 +125,9 @@ if __name__ == '__main__':
     p = [1e-4] * 3 + [1e-3] * 3 + [1e-2] * 3
     for noisy_p in p:
         tstart = time.time()
-        print("===============================================")
-        print(f"===========p = {noisy_p:.4f}===========")
-        model_circuit = create_model_circuit(QUBITS, VARS, noisy_p, full_size=QUBITS_NUM//2+1, noise_op=noise_op[NOISY_TYPE], mixed=mixed)
+        #print("\n===============================================")
+        print(f"\n==================p = {noisy_p:.4f}===================")
+        model_circuit = create_model_circuit(QUBITS, VARS, noisy_p, full_size=QUBITS_NUM//2+1, noise_op=noise_op[NOISE_TYPE], mixed=mixed)
         k = lipschitz(model_circuit, QUBITS, np.array([[1.,0.],[0.,0.]]))
         if k != -1:
             print("Lipschitz K = ", k)

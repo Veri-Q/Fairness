@@ -11,9 +11,9 @@ This repository contains two parts:
     * [Cirq](https://quantumai.google/cirq) for representing (noisy) quantum circuits.
     * [Tensornetwork](https://github.com/google/tensornetwork) for manipulating tensor networks.
     * [Numpy](https://numpy.org/) for linear algebra computations.
-    * [Jax](https://github.com/google/jax) for  just-in-time (JIT) compilation in Python.
+    * [Jax](https://github.com/google/jax) for just-in-time (JIT) compilation in Python.
     * [Tensorflow Quantum](https://www.tensorflow.org/quantum) for training quantum decision models.
-    * [Project Jupyter](https://jupyter.org/) for demonstrating the workflow of artifact.
+    * [dice-ml](https://github.com/interpretml/DiCE) for DiCE adult income dataset.
 
 ## Installation (for Linux) ##
 
@@ -53,11 +53,32 @@ k = lipschitz(model_circuit, qubits, measurement)
 
 ## Experiments (Artifact Evaluations) ##
 
-### GC ###
+🟥 Notice: Due to the randomness inherent in the training of quantum models, the results of repeated experiments may be numerically inconsistent. 
 
-### DiCE ###
+### Application in Finance (GC & DiCE) ###
 
-###  QCNN models ###
+We provide two scripts `evaluate_finance_model_gc.py` and `evaluate_finance_model_dice.py` to reproduce Table 1 in the paper. These two scripts will train a quantum decision model based on the given arguments (`<noise_type>` and  `<noisy_probability>`) and compute the lipschtiz constant of the trained model:
+
+1. For **German Credit** in Table 1
+
+    ```bash
+    python evaluate_finance_model_gc.py <noise_type> <noisy_probability>
+    ```
+2. For **Adult Income (DiCE)** in Table 1
+
+    ```bash
+    python evaluate_finance_model_dice.py <noise_type> <noisy_probability>
+    ```
+where `<noisy_probability>` is the probability of noise that can be: `0.0`, `0.01`, `0.001` and `0.0001`; `<noise_type>` is the type of noise that can be the following four values: `phase_flip` for phase flip noise, `depolarize` for depolarize noise, `bit_flip` for bit flip noise and `mixed` for mixed noise.
+
+e.g. run `python evaluate_finance_model_gc.py depolarize 0.0001` can reproduce the results of **German Credit** and **Depolarize** noise with probability **10^(-4)** in Table 1.
+
+---
+*🟥 Since TensorFlow Quantum is inefficient in training noisy models, we provide trained parameters for **German Credit**. The users can load the parameters and reproduce the part of **German Credit** in Table 1 by the script `evaluate_trained_model_gc.py`.*
+
+e.g. run `python evaluate_finance_model_gc.py depolarize 0.0001` can reproduce the Lipschitz constant and evaluating time of **German Credit** and **Depolarize** noise with probability **10^(-4)** in Table 1.
+
+###  Scalability in the NISQ era (QCNN Models) ###
 
 We provide a script `evaluate_qcnn_model.py` to reproduce Table 2 in the paper.
 
@@ -66,4 +87,7 @@ python evaluate_qcnn_model.py <qubits_num> <noise_type>
 ```
 where `<qubits_num>` is the number of qubits (integer), `<noise_type>` is the type of noise that can be the following four values: `phase_flip` for phase flip noise, `depolarize` for depolarize noise, `bit_flip` for bit flip noise and `mixed` for mixed noise.
 
-e.g. run command `python evaluate_qcnn_model.py 25 depolarize` can reproduce the results of **25 Qubits** and **Depolarize Noise** in Table 2.
+e.g. run command `python evaluate_qcnn_model.py 25 depolarize` can reproduce the results of **25 Qubits** and **Depolarize** noise in Table 2.
+
+---
+*🟥 The server used in our experiment has 2048GB of memory. For users who do not have such a large memory, you can try a smaller number (15-20) of qubits*

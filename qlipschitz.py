@@ -126,7 +126,7 @@ def largest_eigenvalue(nqs, mv, N):
         if ((time.time() - start0) / 60 / 60  > 5):
             print("\n!!Time Out!!")
             return -1
-        if jnp.abs(e - e0) < 1e-5:
+        if jnp.abs(e - e0) < 1e-6:
             break
         
         e0 = e
@@ -149,7 +149,7 @@ def smallest_eigenvalue(nqs, mv, N):
         if ((time.time() - start0) / 60 / 60  > 5):
             print("\n!!Time Out!!")
             return -1
-        if jnp.abs(e - e0) < 1e-5:
+        if jnp.abs(e - e0) < 1e-6:
             break
         
         e0 = e
@@ -161,10 +161,10 @@ def smallest_eigenvalue(nqs, mv, N):
 def lipschitz(model_circuit, qubits, measurement):
     n, mv1, mv2 = model_to_mv(model_circuit, qubits, measurement)
     e1 = largest_eigenvalue(n, mv1, 200)
-    if e1 < 0:
+    if e1 == -1:
         return -1
     e2 = smallest_eigenvalue(n, mv2, 200)
-    if e2 < 0:
+    if e2 == -1:
         return -1
 
     return e1 - e2
