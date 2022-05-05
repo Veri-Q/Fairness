@@ -1,4 +1,4 @@
-# Verifying Fairness in Quantum Machine Learning #
+# VeriQFair: Verifying Fairness in Quantum Machine Learning #
 
 This repository contains two parts:
 - An implementation for computing the Lipschitz constant of a quantum decision model (See Algorithm 1 in the paper).
@@ -53,11 +53,11 @@ k = lipschitz(model_circuit, qubits, measurement)
 
 ## Experiments (Artifact Evaluations) ##
 
-🟥 Notice: Due to the randomness inherent in the training of quantum models, the results of repeated experiments may be numerically inconsistent. 
+🟥 Notice: Due to the inherent randomness in the training of quantum models, the results of repeated experiments may be numerically inconsistent. 
 
-### Application in Finance (GC & DiCE) ###
+### A Practical Application in Finance (GC & DiCE) ###
 
-We provide two scripts `evaluate_finance_model_gc.py` and `evaluate_finance_model_dice.py` to reproduce Table 1 in the paper. These two scripts will train a quantum decision model based on the given arguments (`<noise_type>` and  `<noisy_probability>`) and compute the lipschtiz constant of the trained model:
+We provide two scripts `evaluate_finance_model_gc.py` and `evaluate_finance_model_dice.py` to reproduce Table 1 in the paper. These two scripts will train a quantum decision model based on the given arguments (`<noise_type>` and  `<noisy_probability>`) and compute the Lipschtiz constant of the trained model:
 
 1. For **German Credit** in Table 1
 
@@ -69,14 +69,14 @@ We provide two scripts `evaluate_finance_model_gc.py` and `evaluate_finance_mode
     ```bash
     python evaluate_finance_model_dice.py <noise_type> <noisy_probability>
     ```
-where `<noisy_probability>` is the probability of noise that can be: `0.0`, `0.01`, `0.001` and `0.0001`; `<noise_type>` is the type of noise that can be the following four values: `phase_flip` for phase flip noise, `depolarize` for depolarize noise, `bit_flip` for bit flip noise and `mixed` for mixed noise.
+where `<noisy_probability>` is the probability of noise that can be valued at `0.0`, `0.01`, `0.001` and `0.0001`; `<noise_type>` is the type of noise that has four options: `phase_flip` for phase flip noise, `depolarize` for depolarize noise, `bit_flip` for bit flip noise and `mixed` for mixed noise, which is the mixture of the three aforementioned noises.
 
-e.g. run `python evaluate_finance_model_gc.py depolarize 0.0001` can reproduce the results of **German Credit** and **Depolarize** noise with probability **10^(-4)** in Table 1.
+For example, run `python evaluate_finance_model_gc.py depolarize 0.0001` can reproduce the results of **German Credit** and **Depolarize** noise with probability **10^(-4)** in Table 1.
 
 ---
 *🟥 Since TensorFlow Quantum is inefficient in training noisy models, we provide trained parameters for **German Credit**. The users can load the parameters and reproduce the part of **German Credit** in Table 1 by the script `evaluate_trained_model_gc.py`.*
 
-e.g. run `python evaluate_finance_model_gc.py depolarize 0.0001` can reproduce the Lipschitz constant and evaluating time of **German Credit** and **Depolarize** noise with probability **10^(-4)** in Table 1.
+For example, run command `python evaluate_finance_model_gc.py depolarize 0.0001` can reproduce the Lipschitz constant and evaluate the time of **German Credit** and **Depolarize** noise with probability **10^(-4)** in Table 1.
 
 ###  Scalability in the NISQ era (QCNN Models) ###
 
@@ -85,9 +85,9 @@ We provide a script `evaluate_qcnn_model.py` to reproduce Table 2 in the paper.
 ```bash
 python evaluate_qcnn_model.py <qubits_num> <noise_type>
 ```
-where `<qubits_num>` is the number of qubits (integer), `<noise_type>` is the type of noise that can be the following four values: `phase_flip` for phase flip noise, `depolarize` for depolarize noise, `bit_flip` for bit flip noise and `mixed` for mixed noise.
+where `<qubits_num>` is the number of qubits (integer), and again, `<noise_type>` is the type of noise that has four options: `phase_flip` for phase flip noise, `depolarize` for depolarize noise, `bit_flip` for bit flip noise and `mixed` for the mixed one.
 
-e.g. run command `python evaluate_qcnn_model.py 25 depolarize` can reproduce the results of **25 Qubits** and **Depolarize** noise in Table 2.
+For example, run command `python evaluate_qcnn_model.py 25 depolarize` can reproduce the results of **25 Qubits** and **Depolarize** noise in Table 2.
 
 ---
-*🟥 The server used in our experiment has 2048GB of memory. For users who do not have such a large memory, you can try a smaller number (15-20) of qubits*
+*🟥 The server used in our experiments has 2048GB of memory. For the users who do not have s server with the same memory, you can test on a smaller number (15-20) of qubits*.
