@@ -51,6 +51,21 @@ k = lipschitz(model_circuit, qubits, measurement)
 # ...
 ```
 
+For example,
+
+```python
+import cirq
+import numpy as np
+
+from qlipschitz import lipschitz
+
+qubits = cirq.GridQubit.rect(1, 1)
+model_circuit = cirq.Circuit(cirq.X(qubits[0])**0.5, cirq.depolarize(0.01)(qubits[0]))
+measurement = np.array([[1., 0.], [0., 0.]])
+
+k = lipschitz(model_circuit, qubits, measurement)
+```
+
 ## Experiments (Artifact Evaluations) ##
 
 🟥 Notice: Due to the inherent randomness in the training of quantum models, the results of repeated experiments may be numerically inconsistent. 
