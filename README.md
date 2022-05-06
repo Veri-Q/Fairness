@@ -71,7 +71,7 @@ We provide two scripts `evaluate_finance_model_gc.py` and `evaluate_finance_mode
     ```
 where `<noisy_probability>` is the probability of noise that can be valued at `0.0`, `0.01`, `0.001` and `0.0001`; `<noise_type>` is the type of noise that has four options: `phase_flip` for phase flip noise, `depolarize` for depolarize noise, `bit_flip` for bit flip noise and `mixed` for mixed noise, which is the mixture of the three aforementioned noises.
 
-For example, run `python evaluate_finance_model_gc.py depolarize 0.0001` can reproduce the results of **German Credit** and **Depolarize** noise with probability **10^(-4)** in Table 1.
+For example, running `python evaluate_finance_model_gc.py depolarize 0.0001` can reproduce the results of **German Credit** and **Depolarize** noise with probability **10^(-4)** in Table 1.
 
 ---
 *🟥 Since TensorFlow Quantum is inefficient in training noisy models, we provide trained parameters for **German Credit**. The users can load the parameters and reproduce the part of **German Credit** in Table 1 by the script `evaluate_trained_model_gc.py`.*
@@ -87,7 +87,7 @@ python evaluate_qcnn_model.py <qubits_num> <noise_type>
 ```
 where `<qubits_num>` is the number of qubits (integer), and again, `<noise_type>` is the type of noise that has four options: `phase_flip` for phase flip noise, `depolarize` for depolarize noise, `bit_flip` for bit flip noise and `mixed` for the mixed one.
 
-For example, run command `python evaluate_qcnn_model.py 25 depolarize` can reproduce the results of **25 Qubits** and **Depolarize** noise in Table 2.
+For example, running command `python evaluate_qcnn_model.py 25 depolarize` can reproduce the results of **25 Qubits** and **Depolarize** noise in Table 2.
 
 ---
-*🟥 The server used in our experiments has 2048GB of memory. For the users who do not have s server with the same memory, you can test on a smaller number (15-20) of qubits*.
+*🟥 The server used in our experiments has 2048GB of memory. For the users who do not have a server with the same memory, you can test on a smaller number (15-20) of qubits*.
