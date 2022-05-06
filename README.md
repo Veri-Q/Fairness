@@ -45,7 +45,7 @@ from qlipschitz import lipschitz
 
 # model_circuit: the (noisy) quantum circuit written with cirq; It expresses the super-operator $\mathcal{E}$ in a quantum decision model.
 # qubits: all (cirq) qubits used in this model; usually, qubits = model_circuit.all_qubits()
-# measurement: a one qubit measurement (2x2 matrix) on the last qubit of qubits; It expresses the measurement $M$ in a quantum decision model.
+# measurement: a single qubit measurement (2x2 Hermition matrix) on the last qubit of qubits; It expresses the measurement $M$ at the end of a quantum decision model.
 k = lipschitz(model_circuit, qubits, measurement)
 
 # ...
