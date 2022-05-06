@@ -64,6 +64,8 @@ model_circuit = cirq.Circuit(cirq.X(qubits[0])**0.5, cirq.depolarize(0.01)(qubit
 measurement = np.array([[1., 0.], [0., 0.]])
 
 k = lipschitz(model_circuit, qubits, measurement)
+
+print('The Lipschitz constant is ', k)
 ```
 
 ## Experiments (Artifact Evaluations) ##
