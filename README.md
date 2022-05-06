@@ -90,4 +90,4 @@ where `<qubits_num>` is the number of qubits (integer), and again, `<noise_type>
 For example, running command `python evaluate_qcnn_model.py 25 depolarize` can reproduce the results of **25 Qubits** and **Depolarize** noise in Table 2.
 
 ---
-*🟥 The server used in our experiments has 2048GB of memory. For the users who do not have a server with the same memory, you can test on a smaller number (15-20) of qubits*.
+*🟥 The server used in our experiments has 2048GB of memory. For the users who do not have a server with the same memory, you can test on a smaller number (10-15) of qubits*.
