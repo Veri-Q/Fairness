@@ -1,4 +1,5 @@
 import tensorflow as tf
+import tensorflow_quantum as tfq
 
 import cirq
 import numpy as np
@@ -17,9 +18,9 @@ def circuit2M(p, variables, noise_op=cirq.depolarize, mixed=False):
 
     if p > 1e-5:
         if mixed:
-            noisy_kraus = [cirq.kraus(cirq.bit_flip(p)(q)) for q in qubits[::3]]
-            noisy_kraus += [cirq.kraus(cirq.depolarize(p)(q)) for q in qubits[1::3]]
-            noisy_kraus += [cirq.kraus(cirq.phase_flip(p)(q)) for q in qubits[2::3]]
+            noisy_kraus = [cirq.channel(cirq.bit_flip(p)(q)) for q in qubits[::3]]
+            noisy_kraus += [cirq.channel(cirq.depolarize(p)(q)) for q in qubits[1::3]]
+            noisy_kraus += [cirq.channel(cirq.phase_flip(p)(q)) for q in qubits[2::3]]
         else:
             noisy_kraus = [cirq.channel(noise_op(p)(q)) for q in qubits] 
     

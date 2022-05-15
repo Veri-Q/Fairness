@@ -35,6 +35,28 @@ We recommend the users to use [Conda](https://docs.conda.io/en/latest/) to confi
     pip install -r requirements.txt
     ```
 
+### Install with Docker ###
+
+This repository provides a Dockerfile. The user can directly built a docker image from this Dockerfile and use it.
+
+1. Clone this repository and cd to it.
+    ```bash
+    git clone https://github.com/Veri-Q/Fairness.git && cd Fairness
+    ```
+2. Build docker image.
+    ```bash
+    docker build -t qfairness .
+    ```
+3. Run the built image.
+    ```bash
+    docker run -t -i qfairness /bin/bash
+    ```
+
+🟥 For CAV2022 Artifact, we also provide a **Docker image** `qfairness.tar`. The user can load this image and run it directly:
+```
+docker load -i qfairness.tar && docker run -i -t qfairness /bin/bash
+``` 
+
 ## Computing the Lipschitz Constant ##
 
 The file `qlipschitz.py` in this repository is the implementation of Algorithm 1 in the paper. It provides a function `lipschitz` that accepts a quantum decision model and outputs the model's Lipschitz constant as defined in the paper. The usage of `lipschitz` in Python is as follows:
