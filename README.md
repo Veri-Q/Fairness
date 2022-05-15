@@ -52,7 +52,7 @@ This repository provides a Dockerfile. The user can directly built a docker imag
     docker run -t -i qfairness /bin/bash
     ```
 
-🟥 For CAV2022 Artifact, we also provide a **Docker image** `qfairness.tar`. The user can load this image and run it directly:
+🟥 For CAV2022 Artifact, we also provide a **Docker image** `qfairness.tar` on [Zenodo](https://doi.org/10.5281/zenodo.6550897). The user can load this image and run it directly:
 ```
 docker load -i qfairness.tar && docker run -i -t qfairness /bin/bash
 ``` 
@@ -65,10 +65,11 @@ from qlipschitz import lipschitz
 
 # ...
 
-# model_circuit: the (noisy) quantum circuit written with cirq; It expresses the super-operator $\mathcal{E}$ in a quantum decision model.
-# qubits: all (cirq) qubits used in this model; usually, qubits = model_circuit.all_qubits()
-# measurement: a single qubit measurement (2x2 Hermitian matrix) on the last qubit of qubits; It expresses the measurement $M$ at the end of a quantum decision model.
+
 k = lipschitz(model_circuit, qubits, measurement)
+# model_circuit: the (noisy) quantum circuit descried by Cirq; It expresses the super-operator $\mathcal{E}$ in the quantum decision model.
+# qubits: all (cirq) qubits used in the model; usually, qubits = model_circuit.all_qubits()
+# measurement: a single qubit measurement (2x2 Hermitian matrix) on the last one of all qubits in the model; It expresses the measurement $M$ at the end of the model.
 
 # ...
 ```
