@@ -52,7 +52,7 @@ This repository provides a Dockerfile. The user can directly built a docker imag
     docker run -t -i qfairness /bin/bash
     ```
 
-🟥 For CAV2022 Artifact, we also provide a **Docker image** `qfairness.tar` on [Zenodo](https://doi.org/10.5281/zenodo.6550897). The user can load this image and run it directly:
+🟥 For CAV2022 Artifact, we also provide a **Docker image** `qfairness.tar` on [Zenodo](https://doi.org/10.5281/zenodo.6612720). The user can load this image and run it directly:
 ```
 docker load -i qfairness.tar && docker run -i -t qfairness /bin/bash
 ``` 

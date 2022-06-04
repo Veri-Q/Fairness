@@ -4,7 +4,6 @@ tensorflow==2.4.1
 tensorflow-quantum==0.5.1
 jaxlib
 jax
-jupyter
 tensornetwork
 dice_ml
 sklearn
