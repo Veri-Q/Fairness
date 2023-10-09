@@ -3,7 +3,8 @@
 This repository contains two parts:
 - An implementation for computing the Lipschitz constant of a quantum decision model (See Algorithm 1 in the paper).
 - Experiment codes and data for CAV2022 Artifact Evaluation (See Section 6 in the paper).
-
+  
+[Guan, J., Fang, W. and Ying, M., 2022, August. Verifying Fairness in Quantum Machine Learning. In International Conference on Computer Aided Verification (pp. 408-429). Cham: Springer International Publishing.](https://link.springer.com/chapter/10.1007/978-3-031-13188-2_20)
 ## Requirements ##
 
 - [Python3.8](https://www.python.org/).
